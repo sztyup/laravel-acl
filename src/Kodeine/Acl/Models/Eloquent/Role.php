@@ -72,10 +72,6 @@ class Role extends Model
         $permission = $this->hasDelimiterToArray($permission);
         $permissions = $this->getPermissions() + $mergePermissions;
 
-        // make permissions to dot notation.
-        // create.user, delete.admin etc.
-        $permissions = $this->toDotPermissions($permissions);
-
         // validate permissions array
         if ( is_array($permission) ) {
 
