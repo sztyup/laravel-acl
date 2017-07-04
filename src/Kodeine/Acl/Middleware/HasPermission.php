@@ -72,10 +72,6 @@ class HasPermission
         $request = $this->request;
         $role = $this->getAction('is');
 
-        if($request->user() == null) {
-            return false;
-        }
-
         return ! $this->forbiddenRoute() && $request->user()->hasRole($role);
     }
 
@@ -88,10 +84,6 @@ class HasPermission
     {
         $request = $this->request;
         $do = $this->getAction('can');
-
-        if($request->user() == null) {
-            return false;
-        }
 
         return ! $this->forbiddenRoute() && $request->user()->can($do);
     }
