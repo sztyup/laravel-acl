@@ -30,7 +30,7 @@ class Role extends Model
     public function getRouteKeyName() {
         return 'slug';
     }
-    
+
     /**
      * Roles can belong to many users.
      *
@@ -71,6 +71,9 @@ class Role extends Model
 
         $permission = $this->hasDelimiterToArray($permission);
         $permissions = $this->getPermissions() + $mergePermissions;
+
+        $permissions = array_keys($permissions);
+        $permissions = array_combine($permissions, $permissions);
 
         // validate permissions array
         if ( is_array($permission) ) {
