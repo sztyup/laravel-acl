@@ -52,14 +52,14 @@ class HasPermission
         if ( $request->isJson() || $request->wantsJson() ) {
             return response()->json([
                 'error' => [
-                    'status_code' => 401,
+                    'status_code' => 403,
                     'code'        => 'INSUFFICIENT_PERMISSIONS',
                     'description' => 'You are not authorized to access this resource.'
                 ],
-            ], 401);
+            ], 403);
         }
 
-        return abort(401, 'You are not authorized to access this resource.');
+        return abort(403, 'You are not authorized to access this resource.');
     }
 
     /**
